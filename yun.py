@@ -47,13 +47,8 @@ async def handle_turn(client, message):
     await respond_to_turn(client, message)
 
 async def main():
-    await bot.start()
+    await bot.run()
     print("Bot started. Press Ctrl+C to stop.")
-    try:
-        print("Sex")
-    except KeyboardInterrupt:
-        print("Stopping bot...")
-        await bot.stop()
 
 if __name__ == "__main__":
     asyncio.run(main())
