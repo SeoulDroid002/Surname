@@ -1,13 +1,13 @@
-import asyncio
 import pyrogram
 from pyrogram import filters, Client
 import nltk
 from nltk.corpus import words
 import re
 import random
+import asyncio 
 
 # Initialize the bot
-bot = Client("my_bot", session_string="BQDCoasAuI0F_3jR2plLj34jzkk2RBBiufgwacvXCN6GeRDkXq2Ug3BWuFEMDZ1EDxeNIrnJSzRWqYhCuMvpaHB_RNkojRHr1kdTzmEf9wGoSluwFK6kV69n5OLGOmhNIMybSjg4lj4BDci3_iFGhYS3Bn6LtKIwCoR_OlLRIhhpRREpkZrnIQSkGbEqv4zThK40MN2AKPPy5_l8TUItRM670cleGt_dAFIfBkwGiXuvRHCcGF-APOrb0vKiR4-hf1EX0ZTv07UQfG2vxsOHfrYgBRn97si9QuLVjdSRCmmr1uOt7OzJNERmzio3LFAAdHAEJ2nprBqOexpznkJTodAJWEDLVgAAAAGmo4A-AA", workers=100, sleep_threshold=0, ipv6=True, max_concurrent_transmissions=5)
+bot = Client("my_bot", session_string="BQDCoasAwZbZxkMkf7sxyaijJC9Zx0JKhY6LN_i8h8sydq6Ehmr5WyFgI5nKV5zNY4bvHu35qBUg78k5xxxJ2iftH3EFc7uXKP79-V7PCtxEPaG8GRa51FBKtsdVFnVHfqJV9ykNAqkr9oK_FdcKT_Vtci2dKo5jB_V9JXZ0Uh6QOfDH4f8Gdzf9enc2IbGnikWeoSp2TixpKNQeBFv30YXr4iQeKSQqMrzYGl7YEl_cSe00w-zP4iA9_wsqDxbYW0cCdn4G782Z6iT38KKokfolNqToBH63jVbKf1y_mEO5XWlVf_0A8TPij47TvO4csm59c_O0vogSMXFBiL25B8PmjnX6BQAAAAGUTcYsAA", workers=100, sleep_threshold=0, ipv6=True, max_concurrent_transmissions=5)
 
 # Load the English words corpus
 nltk.download('words')
@@ -42,13 +42,8 @@ async def respond_to_turn(client, message):
     # Add the word to the used words set
     used_words.add(response_word)
 
-@bot.on_message(filters.regex("Turn: Yun Che \(Next:.*?\)\nYour word must start with (\w) and include at least (\d+) letters\.\nYou have (\d+)s to answer\.\nPlayers remaining: (\d+)/(\d+)\nTotal words: (\d+)"))
-async def handle_turn(client, message):
+@bot.on_message(filters.regex("Turn: Yun Che \\(Next: .*?\\)\\nYour word must start with (\\w) and include at least (\\d+) letters\\.\\nYou have (\\d+)s to answer\\.\\nPlayers remaining: (\\d+)/(\\d+)\\nTotal words: (\\d+)"))
+async def handle_message(client, message):
     await respond_to_turn(client, message)
 
-async def main():
-    await bot.run()
-    print("Bot started. Press Ctrl+C to stop.")
-
-if __name__ == "__main__":
-    asyncio.run(main())
+bot.run()
