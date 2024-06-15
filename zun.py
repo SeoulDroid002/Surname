@@ -1,5 +1,4 @@
 import asyncio
-import uvloop
 import pyrogram
 from pyrogram import filters, Client
 import nltk
@@ -57,5 +56,4 @@ async def main():
         await bot.stop()
 
 if __name__ == "__main__":
-    uvloop.install()
     asyncio.run(main())
